@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HA | Dashboard</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+
+    <link rel="stylesheet" href="assets/vendors/chartjs/Chart.min.css">
+
+    <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
+</head>
+<style>
+    .input-group-text {
+        width: 5rem !important;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class='active'>
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <h2>Admin - HA</h2>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class='sidebar-title'>Main Menu</li>
+                        <li class="sidebar-item active ">
+                            <a href="index.html" class='sidebar-link'>
+                                <i data-feather="home" width="20"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item  ">
+                            <a href="archive.html" class='sidebar-link'>
+                                <i data-feather="grid" width="20"></i>
+                                <span>Archive</span>
+                            </a>
+                        </li>
+                        <li class='sidebar-title'>Admin</li>
+                        <!-- <li class="sidebar-item  ">
+                            <a href="users.html" class='sidebar-link'>
+                                <i data-feather="user" width="20"></i>
+                                <span>Users</span>
+                            </a>
+                        </li> -->
+
+                        <li class="sidebar-item  ">
+                            <a href="#" onclick="logout()" class='sidebar-link'>
+                                <i data-feather="log-out" width="20"></i>
+                                <span>Signout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+            </div>
+        </div>
+        <div id="main">
+            <nav class="navbar navbar-header navbar-expand navbar-light">
+                <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
+                <button class="btn navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+
+            <div class="main-content container-fluid pt-0 px-5">
+                <h4 class="mb-3">Dashboard</h4>
+                <section class="section">
+                    <div class="row mb-4">
+                        <div class="card">
+                            <h5 class="card-header pb-2">Device # 01</h5>
+                            <div class="card-body">
+                                <div class="row pb-2">
+                                    <div class="col-sm-12 col-md-12 col-lg-4 mt-0">
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon1">Date</span>
+                                            <input id="latest_date_1" type="text" class="form-control" placeholder=" "
+                                                aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-4 mt-0">
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon2">Time</span>
+                                            <input id="latest_time_1" type="text" class="form-control" placeholder=" "
+                                                aria-label="Username" aria-describedby="basic-addon2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6 col-md-12">
+                                        <div class="card text-center">
+                                            <h5 class="card-header p-0 pt-3" style="font-weight: bold;">TEMPERATURE</h5>
+                                            <div class="card-body p-0">
+                                                <h2 id="latest_temp_1" class="pt-2"
+                                                    style="font-weight: bold; font-size: 28pt;">-</h2>
+                                                <p>degree Celcius</p>
+                                                <div id="stat_temp_1">
+                                                    <span class="badge bg-success mb-2">NORMAL</span>
+                                                </div>
+                                            </div>
+                                            <div id="stat_htemp_1" class="card-footer p-2 bg-success">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6 col-md-12">
+                                        <div class="card text-center">
+                                            <h5 class="card-header p-0 pt-3" style="font-weight: bold;">HEART RATE</h5>
+                                            <div class="card-body p-0">
+                                                <h2 id="latest_heart_1" class="pt-2"
+                                                    style="font-weight: bold; font-size: 28pt;">-</h2>
+                                                <p>beats per minute</p>
+                                                <div id="stat_heart_1">
+                                                    <span class="badge bg-success mb-2">NORMAL</span>
+                                                </div>
+                                            </div>
+                                            <div id="stat_hfoot_1" class="card-footer p-2 bg-success">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onclick="open_map(1)" class="btn btn-primary btn-block">
+                                    <i data-feather="map-pin" width="20"></i>
+                                    &nbsp;Location
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="card">
+                            <h5 class="card-header pb-2">Device # 02</h5>
+                            <div class="card-body">
+                                <div class="row pb-2">
+                                    <div class="col-sm-12 col-md-12 col-lg-4 mt-0">
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon1">Date</span>
+                                            <input id="latest_date_2" type="text" class="form-control" placeholder=" "
+                                                aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-12 col-lg-4 mt-0">
+                                        <div class="input-group mb-2">
+                                            <span class="input-group-text" id="basic-addon2">Time</span>
+                                            <input id="latest_time_2" type="text" class="form-control" placeholder=" "
+                                                aria-label="Username" aria-describedby="basic-addon2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6 col-md-12">
+                                        <div class="card text-center">
+                                            <h5 class="card-header p-0 pt-3" style="font-weight: bold;">TEMPERATURE
+                                            </h5>
+                                            <div class="card-body p-0">
+                                                <h2 id="latest_temp_2" class="pt-2"
+                                                    style="font-weight: bold; font-size: 28pt;">-
+                                                </h2>
+                                                <p>degree Celcius</p>
+                                                <div id="stat_temp_1">
+                                                    <span class="badge bg-secondary mb-2">OFFLINE</span>
+                                                </div>
+                                            </div>
+                                            <div id="stat_htemp_2" class="card-footer p-2 bg-secondary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6 col-md-12">
+                                        <div class="card text-center">
+                                            <h5 class="card-header p-0 pt-3" style="font-weight: bold;">HEART RATE
+                                            </h5>
+                                            <div class="card-body p-0">
+                                                <h2 id="latest_heart_2" class="pt-2"
+                                                    style="font-weight: bold; font-size: 28pt;">-
+                                                </h2>
+                                                <p>beats per minute</p>
+                                                <div id="stat_heart_2">
+                                                    <span class="badge bg-secondary mb-2">OFFLINE</span>
+                                                </div>
+                                            </div>
+                                            <div id="stat_hfoot_2" class="card-footer p-2 bg-secondary">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onclick="alert('Device not Found.')" class="btn btn-primary btn-block">
+                                    <i data-feather="map-pin" width="20"></i>
+                                    &nbsp;Location
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/js/feather-icons/feather.min.js"></script>
+    <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <!-- <script src="assets/js/pages/dashboard.js"></script> -->
+    <script src="assets/js/main.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
