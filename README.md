@@ -11,3 +11,6 @@ The project isn't only limited for tracking individuals. The project can still b
 hospitals can use the project to monitor their outpatients. Patients who are at risk of unpredictable health conditions such us having Seizures, 
 Stroke, Cardiac Arrest and Heart Attack. If an incident does occur, the system can predict it before it even occurs, the system would be able to 
 notify the nearest hospital by sending the exact GPS coordinates of the person in need.
+
+Jan Allen Rialubin, Nathaniel Florendo Tornilla, Glenrick Anthony Juarez, Jeremy de Peralta, Alexander Abigania Pacioles III
+Authors
